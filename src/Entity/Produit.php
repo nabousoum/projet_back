@@ -48,7 +48,7 @@ class Produit
     protected $description;
 
     #[ORM\Column(type: 'blob', nullable: true)]
-    #[Groups(["write","burger:read:simple","burger:read:all"])]
+    #[Groups(["write","burger:read:simple","burger:read:all","catalogue:read:simple"])]
     protected $image;
 
     // #[ORM\Column(type: 'blob')]
