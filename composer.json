@@ -81,6 +81,9 @@
             "requirements-checker": "script",
             "lexik:jwt:generate-keypair": "symfony-cmd"
         },
+        "compile": [
+            "@php bin/console lexik:jwt:generate-keypair --overwrite --quiet --env prod"
+        ],
         "post-update-cmd": [
             "@auto-scripts"
         ]
