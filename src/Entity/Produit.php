@@ -4,9 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProduitRepository;
-use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -43,7 +41,7 @@ class Produit
     protected $etat="disponible";
 
     #[ORM\Column(type: 'text')]
-    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple"])] 
+    #[Groups(["burger:read:simple","burger:read:all","write","complement:read:simple"])] 
     #[Assert\NotBlank(message:'le burger doit avoir une description')]
     protected $description;
 
