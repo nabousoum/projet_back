@@ -30,17 +30,17 @@ class Complement
     private $id;
 
    
-    #[Groups(["catalogue:read:simple"])]
+    #[Groups(["complement:read:simple"])]
     private $portionFrites;
 
     
-    #[Groups(["catalogue:read:simple"])]
+    #[Groups(["complement:read:simple"])]
     private $tailleBoissons;
 
     public function __construct(PortionFriteRepository $fritesRepo,BoissonRepository $tailleRepo)
     {
-        $this->portionFrites = ["portionsFrites"=>$fritesRepo->findBy(['etat'=>'disponible'])];
-        $this->tailleBoissons = ["boissons"=>$tailleRepo->findBy(['etat'=>'disponible'])];
+        $this->portionFrites = $fritesRepo->findBy(['etat'=>'disponible']);
+        $this->tailleBoissons = $tailleRepo->findBy(['etat'=>'disponible']);
     }
 
     public function getId(): ?int

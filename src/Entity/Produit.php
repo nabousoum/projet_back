@@ -22,7 +22,7 @@ class Produit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["burger:read:simple","burger:read:all","write","com:write","catalogue:read:simple"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","com:write","catalogue:read:simple","complement:read:simple"])]
     protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -41,12 +41,12 @@ class Produit
     protected $etat="disponible";
 
     #[ORM\Column(type: 'text')]
-    #[Groups(["burger:read:simple","burger:read:all","write","complement:read:simple"])] 
+    #[Groups(["burger:read:simple","burger:read:all","write"])] 
     #[Assert\NotBlank(message:'le burger doit avoir une description')]
     protected $description;
 
     #[ORM\Column(type: 'blob', nullable: true)]
-    #[Groups(["write","burger:read:simple","burger:read:all","catalogue:read:simple"])]
+    #[Groups(["write","burger:read:simple","burger:read:all","catalogue:read:simple","complement:read:simple"])]
     protected $image;
 
     // #[ORM\Column(type: 'blob')]

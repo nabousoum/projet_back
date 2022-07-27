@@ -24,11 +24,11 @@ final class ComplementDataProvider implements ContextAwareCollectionDataProvider
         return Complement::class === $resourceClass;
     }
 
-    public function getCollection(string $resourceClass, string $operationName = null, array $context = []): iterable
+    public function getCollection(string $resourceClass, string $operationName = null, array $context = [])
     {
-        return[
-            $this->complement->getPortionFrites(),
-            $this->complement->getTailleBoissons()
-        ];
+        $complements=[];
+        $complements['portionFrites'] = $this->complement->getPortionFrites();
+        $complements['tailleBoissons'] = $this->complement->getTailleBoissons();
+        
     }
 }

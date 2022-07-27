@@ -45,7 +45,7 @@ class TailleBoisson
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["write","com:write"])]
+    #[Groups(["write","com:write","complement:read:simple"])]
     private $id;
 
     #[ORM\Column(type: 'float')]
