@@ -25,11 +25,10 @@ final class CatalogueDataProvider implements ContextAwareCollectionDataProviderI
 
     public function getCollection(string $resourceClass, string $operationName = null, array $context = [])
     {
-       
-        return [
-            $this->catalogue->getBurgers(),
-            $this->catalogue->getMenus()
-        ];
+       $catalogues = [];
+       $catalogues['menus'] =  $this->catalogue->getMenus();
+       $catalogues['burgers'] = $this->catalogue->getBurgers();
+        return $catalogues;
         //yield new Catalogue(2);
     }
 }
