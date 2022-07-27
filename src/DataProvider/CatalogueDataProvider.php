@@ -23,7 +23,7 @@ final class CatalogueDataProvider implements ContextAwareCollectionDataProviderI
         return Catalogue::class === $resourceClass;
     }
 
-    public function getCollection(string $resourceClass, string $operationName = null, array $context = []): iterable
+    public function getCollection(string $resourceClass, string $operationName = null, array $context = [])
     {
        
         return [
