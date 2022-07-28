@@ -168,7 +168,7 @@ class Produit
 
     public function getType(): ?string
     {
-
+        dd(get_called_class());
         return str_replace("null",get_called_class(),$this->type);
     }
 
