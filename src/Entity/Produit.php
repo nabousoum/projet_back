@@ -171,10 +171,9 @@ class Produit
         $app = get_called_class();
         $apps = str_replace("\\"," ",$app);
         $apps = explode(" ",$apps);
-        $apps = $apps[2];
-        $type = str_replace("null",$apps,$this->type);
-        dd($type);
-        return "wesh";
+        $type =  $apps[2];
+        //dd($type);
+        return $type;
     }
 
     public function setType(?string $type): self
