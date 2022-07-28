@@ -29,6 +29,6 @@ final class ComplementDataProvider implements ContextAwareCollectionDataProvider
         $complements=[];
         $complements['portionFrites'] = $this->complement->getPortionFrites();
         $complements['tailleBoissons'] = $this->complement->getTailleBoissons();
-        
+        return $complements;
     }
 }
