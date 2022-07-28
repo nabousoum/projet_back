@@ -170,6 +170,7 @@ class Produit
     {
         $app = get_called_class();
         $apps = str_replace("App\\Entity\\","",$app);
+        dd($apps);
         return str_replace("null",$apps,$this->type);
     }
 
