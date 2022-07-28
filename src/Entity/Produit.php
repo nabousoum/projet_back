@@ -173,6 +173,7 @@ class Produit
         $apps = explode(" ",$apps);
         $apps = $apps[2];
         $type = str_replace("null",$apps,$this->type);
+        dd($type);
         return "wesh";
     }
 
