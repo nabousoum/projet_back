@@ -53,7 +53,7 @@ class Produit
     protected $imageBlob;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["burger:read:simple","burger:read:all"])] 
+    #[Groups(["burger:read:simple","burger:read:all","catalogue:read:simple"])] 
     protected ?string $type = null;
 
     public function __construct()
