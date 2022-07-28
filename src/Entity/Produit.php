@@ -169,7 +169,7 @@ class Produit
     public function getType(): ?string
     {
         $app = get_called_class();
-        $apps = str_replace("App\\Entity\\","",$app);
+        $apps = str_replace("\\","",$app);
         dd($apps);
         return str_replace("null",$apps,$this->type);
     }
