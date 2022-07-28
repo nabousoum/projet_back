@@ -37,7 +37,6 @@ class Produit
     protected $prix;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["burger:read:all"])]
     protected $etat="disponible";
 
     #[ORM\Column(type: 'text')]
