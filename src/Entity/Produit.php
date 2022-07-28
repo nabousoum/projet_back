@@ -172,7 +172,6 @@ class Produit
         $apps = str_replace("\\"," ",$app);
         $apps = explode(" ",$apps);
         $type =  $apps[2];
-        //dd($type);
         return $type;
     }
 
