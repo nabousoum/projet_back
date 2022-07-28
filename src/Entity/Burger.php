@@ -59,8 +59,6 @@ class Burger extends Produit
     #[ORM\OneToMany(mappedBy: 'burger', targetEntity: BurgerCommande::class)]
     private $burgerCommandes;
 
-    #[ORM\ManyToOne(inversedBy: 'burger')]
-    private ?Detail $detail = null;
 
     public function __construct()
     {
@@ -149,18 +147,6 @@ class Burger extends Produit
                 $burgerCommande->setBurger(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getDetail(): ?Detail
-    {
-        return $this->detail;
-    }
-
-    public function setDetail(?Detail $detail): self
-    {
-        $this->detail = $detail;
 
         return $this;
     }

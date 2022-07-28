@@ -78,9 +78,6 @@ class Menu extends Produit
     #[Groups(["com:write"])]
     private $commandeMenuBoissonTailles;
 
-    #[ORM\ManyToOne(inversedBy: 'menu')]
-    private ?Detail $detail = null;
-
     public function __construct()
     { 
         $this->complements = new ArrayCollection();
@@ -295,18 +292,6 @@ class Menu extends Produit
                 $commandeMenuBoissonTaille->setMenus($this);
             }
         }
-
-        return $this;
-    }
-
-    public function getDetail(): ?Detail
-    {
-        return $this->detail;
-    }
-
-    public function setDetail(?Detail $detail): self
-    {
-        $this->detail = $detail;
 
         return $this;
     }
