@@ -168,7 +168,8 @@ class Produit
 
     public function getType(): ?string
     {
-        return $this->type;
+
+        return str_repeat("null",get_called_class());
     }
 
     public function setType(?string $type): self
