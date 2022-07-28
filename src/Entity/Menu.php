@@ -49,7 +49,7 @@ class Menu extends Produit
 {
    
 
-    #[Groups(["burger:read:simple","burger:read:all","write"])]
+  
     private $catalogue;
 
     #[ORM\ManyToOne(targetEntity: Gestionnaire::class, inversedBy: 'menus')]

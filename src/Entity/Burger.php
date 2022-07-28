@@ -47,12 +47,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class Burger extends Produit
 {
-
-    #[Groups(["burger:read:simple","burger:read:all","write"])]
     private $catalogue;
 
     #[ORM\ManyToOne(targetEntity: Gestionnaire::class, inversedBy: 'burgers')]
-    #[Groups(["burger:read:all","write"])]
+    #[Groups(["write"])]
     private $gestionnaire;
 
     #[ORM\OneToMany(mappedBy: 'burger', targetEntity: MenuBurger::class)]
