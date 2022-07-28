@@ -172,6 +172,7 @@ class Produit
         $apps = str_replace("\\"," ",$app);
         $apps = explode(" ",$apps);
         $apps = $apps[2];
+        dd($apps);
         return str_replace("null",$apps,$this->type);
     }
 
