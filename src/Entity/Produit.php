@@ -172,7 +172,7 @@ class Produit
         $apps = str_replace("\\"," ",$app);
         $apps = explode(" ",$apps);
         $type =  $apps[2];
-        return $type;
+        return strtolower($type);
     }
 
     public function setType(?string $type): self
