@@ -169,8 +169,9 @@ class Produit
     public function getType(): ?string
     {
         $app = get_called_class();
-        $apps = str_replace("\\","",$app);
-        dd($apps);
+        $apps = str_replace("\\"," ",$app);
+        $apps = explode(" ",$apps);
+        $apps = $apps[2];
         return str_replace("null",$apps,$this->type);
     }
 
