@@ -87,6 +87,7 @@ class Menu extends Produit
         $this->burgerCommandes = new ArrayCollection();
         $this->menuCommandes = new ArrayCollection();
         $this->commandeMenuBoissonTailles = new ArrayCollection();
+        $this->type='menu';
     }
 
     public function getCatalogue(): ?Catalogue

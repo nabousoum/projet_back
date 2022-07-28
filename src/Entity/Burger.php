@@ -65,6 +65,7 @@ class Burger extends Produit
     {
         $this->menuBurgers = new ArrayCollection();
         $this->burgerCommandes = new ArrayCollection();
+        $this->type = 'burger';
     }
 
     public function getCatalogue(): ?Catalogue

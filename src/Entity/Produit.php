@@ -53,6 +53,10 @@ class Produit
     #[Groups(["write"])]
     protected $imageBlob;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["burger:read:simple","burger:read:all"])] 
+    protected ?string $type = null;
+
     public function __construct()
     {
 
@@ -161,5 +165,17 @@ class Produit
                 ->addViolation()
             ;
         }
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }
