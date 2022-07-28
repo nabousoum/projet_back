@@ -168,8 +168,9 @@ class Produit
 
     public function getType(): ?string
     {
-        dd(get_called_class());
-        return str_replace("null",get_called_class(),$this->type);
+        $app = get_called_class();
+        $apps = str_replace("App\\Entity\\","",$app);
+        return str_replace("null",$apps,$this->type);
     }
 
     public function setType(?string $type): self
