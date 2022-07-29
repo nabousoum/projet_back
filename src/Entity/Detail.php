@@ -38,10 +38,9 @@ class Detail
     #[Groups(["detail"])]
     private Collection $tailleBoissons;
 
-    public function __construct(PortionFriteRepository $fritesRepo,BoissonRepository $tailleRepo)
+    public function __construct()
     {
-        $this->portionFrites = $fritesRepo->findBy(['etat'=>'disponible']);
-        $this->tailleBoissons = $tailleRepo->findBy(['etat'=>'disponible']);
+        
     }
 
     public function getId(): ?int

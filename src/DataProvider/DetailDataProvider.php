@@ -10,13 +10,15 @@ use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
 use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
 use App\Entity\Detail;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
+use phpDocumentor\Reflection\Types\This;
 
 final class DetailDataProvider implements ItemDataProviderInterface, RestrictedDataProviderInterface
 {
     
     
-    public function __construct()
+    public function __construct(MenuRepository $menuRepository, BurgerRepository $burgerRepository)
     {
+        
       
     }
 
@@ -27,6 +29,7 @@ final class DetailDataProvider implements ItemDataProviderInterface, RestrictedD
 
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?Detail
     {
-        dd($id);
+        //dd($id);
+        return new Detail($id);
     }
 }
