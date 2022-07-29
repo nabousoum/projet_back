@@ -27,6 +27,9 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
         'normalization_context' => ['groups' => ['burger:read:all']],
         "security"=>"is_granted('ROLE_GESTIONNAIRE')",
         "security_message"=>"Vous n'avez pas access à cette Ressource",
+        'input_formats' => [
+            'multipart' => ['multipart/form-data'],
+        ]
     ]],
     itemOperations:["put"=>[
         "security"=>"is_granted('ROLE_GESTIONNAIRE')",
