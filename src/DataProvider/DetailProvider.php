@@ -14,6 +14,7 @@ final class DetailItemDataProvider implements ItemDataProviderInterface, Seriali
 
     public function supports(string $resourceClass, string $operationName = null, array $context = []): bool
     {
+        dd('ok');
         return Detail::class === $resourceClass;
     }
 
