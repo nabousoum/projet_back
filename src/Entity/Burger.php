@@ -155,33 +155,5 @@ class Burger extends Produit
         return $this;
     }
 
-    /**
-     * @return Collection<int, Detail>
-     */
-    public function getDetails(): Collection
-    {
-        return $this->details;
-    }
-
-    public function addDetail(Detail $detail): self
-    {
-        if (!$this->details->contains($detail)) {
-            $this->details->add($detail);
-            $detail->setBurger($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDetail(Detail $detail): self
-    {
-        if ($this->details->removeElement($detail)) {
-            // set the owning side to null (unless already changed)
-            if ($detail->getBurger() === $this) {
-                $detail->setBurger(null);
-            }
-        }
-
-        return $this;
-    }
+   
 }
