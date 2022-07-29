@@ -8,7 +8,7 @@ use ApiPlatform\Core\DataProvider\SerializerAwareDataProviderInterface;
 use ApiPlatform\Core\DataProvider\SerializerAwareDataProviderTrait;
 use App\Entity\Detail;
 
-final class DetailItemDataProvider implements ItemDataProviderInterface, SerializerAwareDataProviderInterface
+final class DetailDataProvider implements ItemDataProviderInterface, SerializerAwareDataProviderInterface
 {
     use SerializerAwareDataProviderTrait;
 
