@@ -22,17 +22,17 @@ class Produit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["burger:read:simple","burger:read:all","write","com:write","catalogue:read:simple","complement:read:simple"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","com:write","catalogue:read:simple","complement:read:simple","detail"])]
     protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message:'le burger ne doit pas etre vide')]
-    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple","detail"])]
     protected $nom;
 
 
     #[ORM\Column(type: 'float')]
-    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple","detail"])]
     // #[Assert\Positive(message: 'le prix ne doit pas etre negatif')]
     protected $prix;
 
@@ -40,12 +40,12 @@ class Produit
     protected $etat="disponible";
 
     #[ORM\Column(type: 'text')]
-    #[Groups(["burger:read:simple","burger:read:all","write"])] 
+    #[Groups(["burger:read:simple","burger:read:all","write","detail"])] 
     #[Assert\NotBlank(message:'le burger doit avoir une description')]
     protected $description;
 
     #[ORM\Column(type: 'blob', nullable: true)]
-    #[Groups(["write","burger:read:simple","burger:read:all","catalogue:read:simple","complement:read:simple"])]
+    #[Groups(["write","burger:read:simple","burger:read:all","catalogue:read:simple","complement:read:simple","detail"])]
     protected $image;
 
     // #[ORM\Column(type: 'blob')]

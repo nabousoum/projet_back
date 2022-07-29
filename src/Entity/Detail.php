@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     itemOperations:[
         "get"=>[
@@ -20,15 +21,19 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Detail
 {
 
-    private ?int $id = null;
+    #[Groups(["detail"])]
+    private ?int $id;
 
+    #[Groups(["detail"])]
     private ?Menu $menu;
-
   
+    #[Groups(["detail"])]
     private ?Burger $burger;
 
+    #[Groups(["detail"])]
     private Collection $portionFrites;
 
+    #[Groups(["detail"])]
     private Collection $tailleBoissons;
 
     public function __construct()
