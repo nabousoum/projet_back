@@ -30,6 +30,7 @@ final class DetailDataProvider implements ItemDataProviderInterface, RestrictedD
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?Detail
     {
         //dd($id);
+        $id=1;
         return new Detail($id);
     }
 }
