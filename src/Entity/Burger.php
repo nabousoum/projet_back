@@ -59,8 +59,6 @@ class Burger extends Produit
     #[ORM\OneToMany(mappedBy: 'burger', targetEntity: BurgerCommande::class)]
     private $burgerCommandes;
 
-    #[ORM\OneToMany(mappedBy: 'burger', targetEntity: Detail::class)]
-    private Collection $details;
 
 
     public function __construct()
@@ -68,7 +66,6 @@ class Burger extends Produit
         $this->menuBurgers = new ArrayCollection();
         $this->burgerCommandes = new ArrayCollection();
         $this->type = 'burger';
-        $this->details = new ArrayCollection();
     }
 
     public function getCatalogue(): ?Catalogue

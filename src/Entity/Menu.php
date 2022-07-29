@@ -78,9 +78,6 @@ class Menu extends Produit
     #[Groups(["com:write"])]
     private $commandeMenuBoissonTailles;
 
-    #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Detail::class)]
-    private Collection $details;
-
     public function __construct()
     { 
         $this->complements = new ArrayCollection();
@@ -91,7 +88,6 @@ class Menu extends Produit
         $this->menuCommandes = new ArrayCollection();
         $this->commandeMenuBoissonTailles = new ArrayCollection();
         $this->type='menu';
-        $this->details = new ArrayCollection();
     }
 
     public function getCatalogue(): ?Catalogue
