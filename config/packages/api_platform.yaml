@@ -9,4 +9,4 @@ api_platform:
             items_per_page: 10
     formats:
         html: ['text/html']
-        multipart: ['multipart/form-data']
+        # multipart: ['multipart/form-data']
