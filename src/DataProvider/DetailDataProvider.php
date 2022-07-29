@@ -7,6 +7,7 @@ use App\Repository\MenuRepository;
 use App\Repository\BurgerRepository;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
 use App\Entity\Detail;
+use App\Entity\Menu;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 
 final class DetailDataProvider implements ItemDataProviderInterface, RestrictedDataProviderInterface
@@ -26,7 +27,8 @@ final class DetailDataProvider implements ItemDataProviderInterface, RestrictedD
 
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?Detail
     {
-        //dd($id);
-        return new Detail();
+        $detail  = new Detail();
+        $detail->setMenu(new Menu());
+        return $detail;
     }
 }
