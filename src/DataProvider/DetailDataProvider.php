@@ -9,8 +9,9 @@ use App\Repository\BurgerRepository;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
 use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
 use App\Entity\Detail;
+use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 
-final class DetailDataProvider implements ContextAwareCollectionDataProviderInterface, RestrictedDataProviderInterface
+final class DetailDataProvider implements ItemDataProviderInterface, RestrictedDataProviderInterface
 {
     
     
@@ -21,12 +22,11 @@ final class DetailDataProvider implements ContextAwareCollectionDataProviderInte
 
     public function supports(string $resourceClass, string $operationName = null, array $context = []): bool
     {
-        dd('ok');
         return Detail::class === $resourceClass;
     }
 
-    public function getCollection(string $resourceClass, string $operationName = null, array $context = [])
+    public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?Detail
     {
-        return "ok";
+        dd($id);
     }
 }
