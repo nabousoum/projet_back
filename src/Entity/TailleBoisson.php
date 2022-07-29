@@ -64,9 +64,10 @@ class TailleBoisson
     private $menuTailleBoissons;
 
     #[ORM\OneToMany(mappedBy: 'tailleBoisson', targetEntity: BoissonTailleBoisson::class)]
+    #[Groups("detail")]
     private $boissonTailleBoissons;
 
-    
+
     private ?Detail $detail = null;
 
     public function __construct()
