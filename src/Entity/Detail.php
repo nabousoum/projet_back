@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\DetailRepository;
-use App\Repository\BoissonRepository;
-use App\Repository\PortionFriteRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,19 +22,19 @@ class Detail
 {
 
     #[Groups(["detail"])]
-    private ?int $id;
+    public ?int $id;
 
     #[Groups(["detail"])]
-    private ?Menu $menu;
+    public ?Menu $menu;
   
     #[Groups(["detail"])]
-    private ?Burger $burger;
+    public ?Burger $burger;
 
     #[Groups(["detail"])]
-    private Collection $portionFrites;
+    public array $portionFrites;
 
-    #[Groups(["detail"])]
-    private Collection $tailleBoissons;
+     #[Groups(["detail"])]
+    public array $tailleBoissons;
 
     public function __construct()
     {
@@ -75,7 +73,7 @@ class Detail
     /**
      * @return Collection<int, PortionFrite>
      */
-    public function getPortionFrites(): Collection
+    public function getPortionFrites(): array
     {
         return $this->portionFrites;
     }
@@ -83,7 +81,7 @@ class Detail
     /**
      * @return Collection<int, TailleBoisson>
      */
-    public function getTailleBoissons(): Collection
+    public function getTailleBoissons(): array
     {
         return $this->tailleBoissons;
     }
