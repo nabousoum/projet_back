@@ -19,9 +19,10 @@ final class DetailItemDataProvider implements ItemDataProviderInterface, Seriali
 
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?Detail
     {
-        dd('ok');
+       
         // Retrieve data from anywhere you want, in a custom format
-        $data = '...';
+        $data = '..';
+        dd($id);
 
         // Deserialize data using the Serializer
         return $this->getSerializer()->deserialize($data, Detail::class, 'custom');

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\DetailRepository;
+use App\Repository\BoissonRepository;
+use App\Repository\PortionFriteRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,10 +38,10 @@ class Detail
     #[Groups(["detail"])]
     private Collection $tailleBoissons;
 
-    public function __construct()
+    public function __construct(PortionFriteRepository $fritesRepo,BoissonRepository $tailleRepo)
     {
-        $this->portionFrites = new ArrayCollection();
-        $this->tailleBoissons = new ArrayCollection();
+        $this->portionFrites = $fritesRepo->findBy(['etat'=>'disponible']);
+        $this->tailleBoissons = $tailleRepo->findBy(['etat'=>'disponible']);
     }
 
     public function getId(): ?int
