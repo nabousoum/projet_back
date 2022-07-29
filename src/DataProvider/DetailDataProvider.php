@@ -36,13 +36,13 @@ final class DetailDataProvider implements ItemDataProviderInterface, RestrictedD
     {
         $menu = $this->menuRepo->findOneBy(array('id' => $id));
         $burger = $this->burgerRepo->findOneBy(array('id' => $id));
-        dd($burger);
+        //dd($burger);
        $detail = new Detail();
-        if($id == $menu->getId()){
-            $detail->menu = $menu;
-        }
-        elseif($id == $burger->getId()){
+        if($menu == null){
             $detail->burger = $burger;
+        }
+        elseif($burger == null){
+            $detail->menu = $menu;
         }
         $detail->id = $id;
        $detail->portionFrites = $this->fritesRepo->findBy(['etat'=>'disponible']);
