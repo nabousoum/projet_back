@@ -18,7 +18,7 @@ final class DetailDataProvider implements ItemDataProviderInterface, RestrictedD
 {
     
     
-    public function __construct(TailleBoissonRepository $boissonRepo,PortionFriteRepository $fritesRepo,MenuRepository $menuRepo,BurgerRepository $burgerRepo)
+    public function __construct(BoissonRepository $boissonRepo,PortionFriteRepository $fritesRepo,MenuRepository $menuRepo,BurgerRepository $burgerRepo)
     {
        $this->boissonRepo = $boissonRepo;
        $this->fritesRepo = $fritesRepo;
