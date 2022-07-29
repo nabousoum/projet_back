@@ -45,15 +45,15 @@ class TailleBoisson
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["write","com:write","complement:read:simple"])]
+    #[Groups(["write","com:write","complement:read:simple","detail"])]
     private $id;
 
     #[ORM\Column(type: 'float')]
-    #[Groups(["burger:read:simple","burger:read:all","write","complement:read:simple"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","complement:read:simple","detail"])]
     private $prix;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["burger:read:simple","burger:read:all","write","complement:read:simple"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","complement:read:simple","detail"])]
     private $libelle;
 
 
@@ -64,7 +64,9 @@ class TailleBoisson
     private $menuTailleBoissons;
 
     #[ORM\OneToMany(mappedBy: 'tailleBoisson', targetEntity: BoissonTailleBoisson::class)]
+    #[Groups(["detail"])]
     private $boissonTailleBoissons;
+
 
     private ?Detail $detail = null;
 
