@@ -56,18 +56,18 @@ class Menu extends Produit
     private $gestionnaire;
 
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: MenuBurger::class,cascade:['persist'])]
-    #[Groups(["burger:read:simple","burger:read:all","write"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","detail"])]
     #[Assert\Count(min:1,minMessage:'le menu doit avoir minimum un burger')]
     #[Assert\Valid]
     private $menuBurgers;
 
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: MenuPortionFrite::class,cascade:['persist'])]
-    #[Groups(["burger:read:simple","burger:read:all","write"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","detail"])]
     #[Assert\Valid]
     private $menuPortionFrites;
 
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: MenuTailleBoisson::class,cascade:['persist'])]
-    #[Groups(["burger:read:simple","burger:read:all","write"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","detail"])]
     #[Assert\Valid]
     private $menuTailleBoissons;
 
