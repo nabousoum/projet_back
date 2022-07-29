@@ -37,6 +37,7 @@ class Produit
     protected $prix;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(["detail"])]
     protected $etat="disponible";
 
     #[ORM\Column(type: 'text')]
