@@ -78,6 +78,8 @@ class Menu extends Produit
     #[Groups(["com:write"])]
     private $commandeMenuBoissonTailles;
 
+    private Collection $details;
+
     public function __construct()
     { 
         $this->complements = new ArrayCollection();
@@ -88,6 +90,7 @@ class Menu extends Produit
         $this->menuCommandes = new ArrayCollection();
         $this->commandeMenuBoissonTailles = new ArrayCollection();
         $this->type='menu';
+        $this->details = new ArrayCollection();
     }
 
     public function getCatalogue(): ?Catalogue
@@ -290,6 +293,36 @@ class Menu extends Produit
             // set the owning side to null (unless already changed)
             if ($commandeMenuBoissonTaille->getMenus() === $this) {
                 $commandeMenuBoissonTaille->setMenus($this);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Detail>
+     */
+    public function getDetails(): Collection
+    {
+        return $this->details;
+    }
+
+    public function addDetail(Detail $detail): self
+    {
+        if (!$this->details->contains($detail)) {
+            $this->details->add($detail);
+            $detail->setMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetail(Detail $detail): self
+    {
+        if ($this->details->removeElement($detail)) {
+            // set the owning side to null (unless already changed)
+            if ($detail->getMenu() === $this) {
+                $detail->setMenu(null);
             }
         }
 

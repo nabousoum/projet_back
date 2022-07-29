@@ -60,12 +60,16 @@ class Burger extends Produit
     private $burgerCommandes;
 
 
+    private Collection $details;
+
+
 
     public function __construct()
     {
         $this->menuBurgers = new ArrayCollection();
         $this->burgerCommandes = new ArrayCollection();
         $this->type = 'burger';
+        $this->details = new ArrayCollection();
     }
 
     public function getCatalogue(): ?Catalogue
@@ -146,6 +150,36 @@ class Burger extends Produit
             // set the owning side to null (unless already changed)
             if ($burgerCommande->getBurger() === $this) {
                 $burgerCommande->setBurger(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Detail>
+     */
+    public function getDetails(): Collection
+    {
+        return $this->details;
+    }
+
+    public function addDetail(Detail $detail): self
+    {
+        if (!$this->details->contains($detail)) {
+            $this->details->add($detail);
+            $detail->setBurger($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetail(Detail $detail): self
+    {
+        if ($this->details->removeElement($detail)) {
+            // set the owning side to null (unless already changed)
+            if ($detail->getBurger() === $this) {
+                $detail->setBurger(null);
             }
         }
 

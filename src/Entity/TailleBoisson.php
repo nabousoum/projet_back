@@ -66,6 +66,8 @@ class TailleBoisson
     #[ORM\OneToMany(mappedBy: 'tailleBoisson', targetEntity: BoissonTailleBoisson::class)]
     private $boissonTailleBoissons;
 
+    private ?Detail $detail = null;
+
     public function __construct()
     {
         $this->menuTailleBoissons = new ArrayCollection();
@@ -170,6 +172,18 @@ class TailleBoisson
                 $boissonTailleBoisson->setTailleBoisson(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDetail(): ?Detail
+    {
+        return $this->detail;
+    }
+
+    public function setDetail(?Detail $detail): self
+    {
+        $this->detail = $detail;
 
         return $this;
     }
