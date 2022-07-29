@@ -1,16 +1,23 @@
 <?php
-// api/src/DataProvider/DetailItemDataProvider.php
+
 
 namespace App\DataProvider;
 
-use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
-use ApiPlatform\Core\DataProvider\SerializerAwareDataProviderInterface;
-use ApiPlatform\Core\DataProvider\SerializerAwareDataProviderTrait;
+use App\Entity\Catalogue;
+use App\Repository\MenuRepository;
+use App\Repository\BurgerRepository;
+use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
+use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
 use App\Entity\Detail;
 
-final class DetailDataProvider implements ItemDataProviderInterface, SerializerAwareDataProviderInterface
+final class DetailDataProvider implements ContextAwareCollectionDataProviderInterface, RestrictedDataProviderInterface
 {
-    use SerializerAwareDataProviderTrait;
+    
+    
+    public function __construct()
+    {
+      
+    }
 
     public function supports(string $resourceClass, string $operationName = null, array $context = []): bool
     {
@@ -18,14 +25,8 @@ final class DetailDataProvider implements ItemDataProviderInterface, SerializerA
         return Detail::class === $resourceClass;
     }
 
-    public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?Detail
+    public function getCollection(string $resourceClass, string $operationName = null, array $context = [])
     {
-       
-        // Retrieve data from anywhere you want, in a custom format
-        $data = '..';
-        dd($id);
-
-        // Deserialize data using the Serializer
-        return $this->getSerializer()->deserialize($data, Detail::class, 'custom');
+        return "ok";
     }
 }
