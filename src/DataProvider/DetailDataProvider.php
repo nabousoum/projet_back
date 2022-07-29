@@ -34,8 +34,8 @@ final class DetailDataProvider implements ItemDataProviderInterface, RestrictedD
 
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?Detail
     {
-        $menu = $this->menuRepo->find($id);
-        $burger = $this->burgerRepo->find($id);
+        $menu = $this->menuRepo->findOneBy($id);
+        $burger = $this->burgerRepo->findOneBy($id);
        $detail = new Detail();
        $detail->id = $id;
         if($id == $menu->id){
