@@ -14,7 +14,7 @@ use App\Repository\BoissonTailleBoissonRepository;
 
 final class DetailDataProvider implements ItemDataProviderInterface, RestrictedDataProviderInterface
 {   
-    public function __construct(BoissonTailleBoissonRepository $boissonRepo,PortionFriteRepository $fritesRepo,MenuRepository $menuRepo,BurgerRepository $burgerRepo)
+    public function __construct(BoissonRepository $boissonRepo,PortionFriteRepository $fritesRepo,MenuRepository $menuRepo,BurgerRepository $burgerRepo)
     {
        $this->boissonRepo = $boissonRepo;
        $this->fritesRepo = $fritesRepo;
@@ -42,7 +42,7 @@ final class DetailDataProvider implements ItemDataProviderInterface, RestrictedD
         }
         $detail->id = $id;
        $detail->portionFrites = $this->fritesRepo->findBy(['etat'=>'disponible']);
-       $detail->tailleBoissons = $this->boissonRepo->findAll();
+       $detail->tailleBoissons = $this->boissonRepo->findBy(['etat'=>'disponible']);
        
        return $detail;
     }
