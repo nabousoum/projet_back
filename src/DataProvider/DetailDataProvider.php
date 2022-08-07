@@ -10,11 +10,11 @@ use App\Repository\PortionFriteRepository;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
 use App\Entity\Detail;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
-use App\Repository\BoissonTailleBoissonRepository;
+use App\Repository\TailleBoissonRepository;
 
 final class DetailDataProvider implements ItemDataProviderInterface, RestrictedDataProviderInterface
 {   
-    public function __construct(BoissonTailleBoissonRepository $boissonRepo,PortionFriteRepository $fritesRepo,MenuRepository $menuRepo,BurgerRepository $burgerRepo)
+    public function __construct(TailleBoissonRepository $boissonRepo,PortionFriteRepository $fritesRepo,MenuRepository $menuRepo,BurgerRepository $burgerRepo)
     {
        $this->boissonRepo = $boissonRepo;
        $this->fritesRepo = $fritesRepo;

@@ -361,57 +361,57 @@ class Commande
         return $this;
     }
 
-    #[Assert\Callback]
-    public function validate(ExecutionContextInterface $context, $payload)
-    {
-        $menus = count($this->getMenuCommandes());
-        $burgers = count($this->getBurgerCommandes());
-        if ($menus==0 && $burgers==0) {
-            $context
-                ->buildViolation("la commande ne doit pas seulement avoir des complements!")
-                ->addViolation()
-            ;
-        }
+    // #[Assert\Callback]
+    // public function validate(ExecutionContextInterface $context, $payload)
+    // {
+    //     $menus = count($this->getMenuCommandes());
+    //     $burgers = count($this->getBurgerCommandes());
+    //     if ($menus==0 && $burgers==0) {
+    //         $context
+    //             ->buildViolation("la commande ne doit pas seulement avoir des complements!")
+    //             ->addViolation()
+    //         ;
+    //     }
  
-        $menuCom = $this->getMenuCommandes();
-        foreach ($menuCom as $menu) {
-            foreach($menu->getMenu()->getCommandeMenuBoissonTailles() as $boissonTaille){
-                $stock = $boissonTaille->getBoissonTailles()->getStock();
-                $quantiteBoisson = $boissonTaille->getQuantite();
-                if($stock==0 || $stock <0 || $quantiteBoisson > $stock){
-                    $context
-                    ->buildViolation("la quantite de boissons que vous avez demandé est indisponible")
-                    ->addViolation()
-                    ;
-                }
-            }
-        }
+    //     $menuCom = $this->getMenuCommandes();
+    //     foreach ($menuCom as $menu) {
+    //         foreach($menu->getMenu()->getCommandeMenuBoissonTailles() as $boissonTaille){
+    //             $stock = $boissonTaille->getBoissonTailles()->getStock();
+    //             $quantiteBoisson = $boissonTaille->getQuantite();
+    //             if($stock==0 || $stock <0 || $quantiteBoisson > $stock){
+    //                 $context
+    //                 ->buildViolation("la quantite de boissons que vous avez demandé est indisponible")
+    //                 ->addViolation()
+    //                 ;
+    //             }
+    //         }
+    //     }
         
-        foreach ($menuCom as $menu) {
-            foreach($menu->getMenu()->getMenuTailleBoissons() as $menuTaille){
-               $idTaille = $menuTaille->getTailleBoisson()->getId();
-               $quantiteBoisson = $menuTaille->getQuantite();
-               $quantiteBoissonB = 0;
-               foreach($menu->getMenu()->getCommandeMenuBoissonTailles() as $boissonTaille){
-                    $idTailleB = $boissonTaille->getBoissonTailles()->getTailleBoisson()->getId();
-                    if($idTaille == $idTailleB){
-                        $quantiteBoissonB += $boissonTaille->getQuantite();
-                    }   
-                    $tab[] = $idTailleB;
-                }
-                if (!in_array($idTaille,$tab)){
-                    $context
-                        ->buildViolation("la taille de boisson que vous avez choisi ne se trouve pas dans le menu")
-                        ->addViolation()
-                        ;
-                }
-                if ($quantiteBoisson != $quantiteBoissonB) {
-                    $context
-                    ->buildViolation("la quantite de boisson que vous avez choisi ne se trouve pas dans le menu")
-                    ->addViolation()
-                    ;
-                }
-            }
-        }
-    }
+    //     foreach ($menuCom as $menu) {
+    //         foreach($menu->getMenu()->getMenuTailleBoissons() as $menuTaille){
+    //            $idTaille = $menuTaille->getTailleBoisson()->getId();
+    //            $quantiteBoisson = $menuTaille->getQuantite();
+    //            $quantiteBoissonB = 0;
+    //            foreach($menu->getMenu()->getCommandeMenuBoissonTailles() as $boissonTaille){
+    //                 $idTailleB = $boissonTaille->getBoissonTailles()->getTailleBoisson()->getId();
+    //                 if($idTaille == $idTailleB){
+    //                     $quantiteBoissonB += $boissonTaille->getQuantite();
+    //                 }   
+    //                 $tab[] = $idTailleB;
+    //             }
+    //             if (!in_array($idTaille,$tab)){
+    //                 $context
+    //                     ->buildViolation("la taille de boisson que vous avez choisi ne se trouve pas dans le menu")
+    //                     ->addViolation()
+    //                     ;
+    //             }
+    //             if ($quantiteBoisson != $quantiteBoissonB) {
+    //                 $context
+    //                 ->buildViolation("la quantite de boisson que vous avez choisi ne se trouve pas dans le menu")
+    //                 ->addViolation()
+    //                 ;
+    //             }
+    //         }
+    //     }
+    // }
 }
