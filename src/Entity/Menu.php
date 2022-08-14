@@ -26,7 +26,10 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
         'denormalization_context' => ['groups' => ['write']],
         'normalization_context' => ['groups' => ['burger:read:all']],
         "security"=>"is_granted('ROLE_GESTIONNAIRE')",
-        "security_message"=>"Vous n'avez pas access à cette Ressource"
+        "security_message"=>"Vous n'avez pas access à cette Ressource",
+        'input_formats' => [
+            'multipart' => ['multipart/form-data'],
+        ]
     ]],
     itemOperations:["put"=>[
         "security"=>"is_granted('ROLE_GESTIONNAIRE')",
@@ -237,37 +240,37 @@ class Menu extends Produit
         return $this;
     }
 
-    #[Assert\Callback]
-    public function validate(ExecutionContextInterface $context, $payload)
-    {
-        $test = false;
-        $menuBurgers =$this->getMenuBurgers();
-        $nbrMB = count($menuBurgers);
+    // #[Assert\Callback]
+    // public function validate(ExecutionContextInterface $context, $payload)
+    // {
+    //     $test = false;
+    //     $menuBurgers =$this->getMenuBurgers();
+    //     $nbrMB = count($menuBurgers);
        
-        for($i=0;$i<$nbrMB;$i++){
-            $id0 = $menuBurgers[$i]->getBurger()->getId();
-            for($j=$i+1;$j<$nbrMB;$j++){
-                if($id0 == $menuBurgers[$j]->getBurger()->getId()){
-                    $test = true;
-                }
-            }
-        }
+    //     for($i=0;$i<$nbrMB;$i++){
+    //         $id0 = $menuBurgers[$i]->getBurger()->getId();
+    //         for($j=$i+1;$j<$nbrMB;$j++){
+    //             if($id0 == $menuBurgers[$j]->getBurger()->getId()){
+    //                 $test = true;
+    //             }
+    //         }
+    //     }
         
-        $frites = count($this->getMenuPortionFrites());
-        $boissons = count($this->getMenuTailleBoissons());
-        if ($frites==0 && $boissons==0) {
-            $context
-                ->buildViolation("le menu doit avoir au moins un complement !")
-                ->addViolation()
-            ;
-        }
-        if ($test == true) {
-            $context
-                ->buildViolation("Vous avez mis deux fois le mm burger pour des quantites differents")
-                ->addViolation()
-            ;
-        }
-    }
+    //     $frites = count($this->getMenuPortionFrites());
+    //     $boissons = count($this->getMenuTailleBoissons());
+    //     if ($frites==0 && $boissons==0) {
+    //         $context
+    //             ->buildViolation("le menu doit avoir au moins un complement !")
+    //             ->addViolation()
+    //         ;
+    //     }
+    //     if ($test == true) {
+    //         $context
+    //             ->buildViolation("Vous avez mis deux fois le mm burger pour des quantites differents")
+    //             ->addViolation()
+    //         ;
+    //     }
+    // }
 
     /**
      * @return Collection<int, CommandeMenuBoissonTaille>

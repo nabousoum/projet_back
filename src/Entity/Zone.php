@@ -22,7 +22,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
         'method' => 'get',
         'status' => Response::HTTP_OK,
         'normalization_context' => ['groups' => ['zone:read:simple']],
-        "security" => "is_granted('ZONE_ALL',_api_resource_class)", 
         ]
     ,"post"=>[
         "security_post_denormalize" => "is_granted('ZONE_CREATE', object)" ,

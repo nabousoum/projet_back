@@ -18,10 +18,12 @@ class Quartier
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["zone:read:all","zone:write","zone:read:simple"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message:'le libelle  du qurtier ne doit pas etre vide')]
+    #[Groups(["zone:read:all","zone:write","zone:read:simple"])]
     private $libelle;
 
     #[ORM\ManyToOne(targetEntity: Zone::class, inversedBy: 'quartiers')]

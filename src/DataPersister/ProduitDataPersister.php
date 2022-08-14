@@ -29,7 +29,6 @@ class ProduitDataPersister implements DataPersisterInterface
     */
     public function persist($data)
     {
-        
         $data->setImageBlob($this->file->encode());    
         $im = $this->file->encode();
         $data->setImage($im);      

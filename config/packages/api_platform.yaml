@@ -6,8 +6,5 @@ api_platform:
         mime_types: ['multipart/form-data']
     collection:
         pagination:
-            items_per_page: 10
-    formats:
-        jsonld: ['application/ld+json']
-        html: ['text/html']
-        multipart: ['multipart/form-data']
+            items_per_page: 50
+    

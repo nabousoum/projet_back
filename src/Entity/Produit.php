@@ -33,7 +33,7 @@ class Produit
 
     #[ORM\Column(type: 'float')]
     #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple","detail"])]
-    // #[Assert\Positive(message: 'le prix ne doit pas etre negatif')]
+    //  #[Assert\Positive(message: 'le prix ne doit pas etre negatif')]
     protected $prix;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -149,22 +149,22 @@ class Produit
         return $this;
     }
 
-    #[Assert\Callback]
-    public function validate(ExecutionContextInterface $context, $payload)
-    {
-        $test = true;
-        if ($this instanceof Burger || $this instanceof PortionFrite || $this instanceof Menu){
-            if ($this->getPrix() <= 0){
-                $test = false;
-            }
-        }
-        if ($test == false) {
-            $context
-                ->buildViolation("le prix doit ne doit pas etre negatif")
-                ->addViolation()
-            ;
-        }
-    }
+    // #[Assert\Callback]
+    // public function validate(ExecutionContextInterface $context, $payload)
+    // {
+    //     $test = true;
+    //     if ($this instanceof Burger || $this instanceof PortionFrite || $this instanceof Menu){
+    //         if ($this->getPrix() <= 0){
+    //             $test = false;
+    //         }
+    //     }
+    //     if ($test == false) {
+    //         $context
+    //             ->buildViolation("le prix doit ne doit pas etre negatif")
+    //             ->addViolation()
+    //         ;
+    //     }
+    // }
 
     public function getType(): ?string
     {
