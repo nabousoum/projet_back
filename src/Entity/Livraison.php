@@ -53,6 +53,9 @@ class Livraison
     #[Groups(["livraison:write","livraison:read:simple","livraison:read:all"])]
     private $commandes;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $etat = "en cours";
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -113,6 +116,18 @@ class Livraison
                 $commande->setLivraison(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?string $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }
