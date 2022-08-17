@@ -26,8 +26,8 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
             'normalization_context' => ['groups' => ['com:read:simple']],
             'denormalization_context' => ['groups' => ['com:write']]
         ]
-        ],itemOperations:["patch"=>[
-            "security" => "is_granted('COMMANDE_EDIT', object)" ,
+        ],itemOperations:["put"=>[
+           
         ],
             "get"=>[
                 'method' => 'get',
@@ -68,10 +68,11 @@ class Commande
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["com:write","com:read:all","com:write"])]
     private $client;
 
     #[ORM\ManyToOne(targetEntity: Zone::class, inversedBy: 'commandes')]
-    #[Groups(["com:write"])]
+    #[Groups(["com:write","com:read:all","com:write"])]
     private $zone;
 
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: BurgerCommande::class,cascade:['persist'])]

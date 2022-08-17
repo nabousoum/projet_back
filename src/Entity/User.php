@@ -23,7 +23,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["burger:read:all","write","user:read:simple","livreur:read:simple","livreur:read:all","livraison:write"])]
+    #[Groups(["burger:read:all","write","user:read:simple","livreur:read:simple","livreur:read:all","livraison:write","com:read:all","com:write","livraison:write","livraison:read:simple","livraison:read:all"])]
     protected $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
@@ -39,12 +39,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message:'le nom ne doit pas etre vide')]
-    #[Groups(["burger:read:all","user:read:simple","livreur:read:all"])]
+    #[Groups(["burger:read:all","user:read:simple","livreur:read:all","com:read:all","com:write","livraison:write","livraison:read:simple","livraison:read:all"])]
     protected $nom;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message:'le prenom ne doit pas etre vide')]
-    #[Groups(["burger:read:all","user:read:simple","livreur:read:all"])]
+    #[Groups(["burger:read:all","user:read:simple","livreur:read:all","com:read:all","com:write","livraison:write","livraison:read:simple","livraison:read:all"])]
     protected $prenom;
 
     #[ORM\Column(type: 'boolean')]
