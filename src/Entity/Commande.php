@@ -4,12 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CommandeRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 
@@ -35,7 +37,10 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
                 'normalization_context' => ['groups' => ['com:read:all']]
             ]
         ]
-)]
+            ),
+           
+]
+
 class Commande
 {
     #[ORM\Id]

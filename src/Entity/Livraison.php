@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Commande;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LivraisonRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\Response;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -24,7 +26,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'denormalization_context' => ['groups' => ['livraison:write']]
         ]
         ],itemOperations:["put"=>[
-            "security" => "is_granted('LIVRAISON_EDIT', object)" ,
+            "security" => "is_granted('LIVRAISON_EDIT', object)",
+            'denormalization_context' => ['groups' => ['livraison:put']]
         ],
             "get"=>[
                 'method' => 'get',
@@ -51,9 +54,11 @@ class Livraison
 
     #[ORM\OneToMany(mappedBy: 'livraison', targetEntity: Commande::class)]
     #[Groups(["livraison:write","livraison:read:simple","livraison:read:all"])]
+    #[ApiSubresource]
     private $commandes;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["livraison:write","livraison:read:simple","livraison:read:all",'livraison:put'])]
     private ?string $etat = "en cours";
 
     public function __construct()

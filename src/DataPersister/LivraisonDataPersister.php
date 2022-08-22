@@ -32,14 +32,22 @@ class LivraisonDataPersister implements DataPersisterInterface
     /**
     * @param Livraison $data
     */
-    public function persist($data)
+    public function persist($data,$context=[])
     {
-     //dd($data->getCommandes()[0]->getMontantCommande());
-        $montantTotal = $this->montant->CalculMontant($data);
-        $data->setMontantTotal($montantTotal);
-        $data->getLivreur()->setEtat("indisponible");
+        if(array_key_exists('item_operation_name',$context) && $context['item_operation_name'] == "put"){
+          foreach ($context['previous_data']->getCommandes() as  $commande) {
+            $commande->setEtat("paye");
+          }
+          $context['previous_data']->getLivreur()->setEtat("disponible");
+        }
+        if (array_key_exists('collection_operation_name',$context) && $context['collection_operation_name'] == "post_register"){
+            $montantTotal = $this->montant->CalculMontant($data);
+            $data->setMontantTotal($montantTotal);
+            $data->getLivreur()->setEtat("indisponible");
+        }
         $this->entityManager->persist($data);
         $this->entityManager->flush();
+       
     }
     public function remove($data)
     {
