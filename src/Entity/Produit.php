@@ -27,7 +27,7 @@ class Produit
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message:'le burger ne doit pas etre vide')]
-    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple","detail"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple","detail","com:read:simple","com:read:all","com:write"])]
     protected $nom;
 
 
@@ -45,7 +45,7 @@ class Produit
     protected $description;
 
     #[ORM\Column(type: 'blob', nullable: true)]
-    #[Groups(["write","burger:read:simple","burger:read:all","catalogue:read:simple","complement:read:simple","detail"])]
+    #[Groups(["write","burger:read:simple","burger:read:all","catalogue:read:simple","complement:read:simple","detail","com:read:simple","com:read:all","com:write"])]
     protected $image;
 
     // #[ORM\Column(type: 'blob')]

@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
     collectionOperations:[
         "get"=>[
             'normalization_context' => ['groups' => ['com:read:all']],
-            "security" => "is_granted('COMMANDE_ALL',_api_resource_class)", 
+            // "security" => "is_granted('COMMANDE_ALL',_api_resource_class)", 
         ],
         "post_register" => [
             "security_post_denormalize" => "is_granted('COMMANDE_CREATE', object)",

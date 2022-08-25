@@ -19,7 +19,7 @@ class MenuPortionFrite
     private $id;
 
     #[ORM\Column(type: 'integer')]
-    #[Groups(["burger:read:all","write","burger:read:simple","detail"])]
+    #[Groups(["burger:read:all","write","burger:read:simple","detail","com:read:simple","com:read:all","com:write"])]
     #[Assert\Positive(message:'la quantite doit etre egal au moins a 1')]
     private $quantite;
 
@@ -27,7 +27,7 @@ class MenuPortionFrite
     private $menu;
 
     #[ORM\ManyToOne(targetEntity: PortionFrite::class, inversedBy: 'menuPortionFrites')]
-    #[Groups(["burger:read:all","write","burger:read:simple","detail"])]
+    #[Groups(["burger:read:all","write","burger:read:simple","detail","com:read:simple","com:read:all","com:write"])]
     private $portionFrite;
 
     public function getId(): ?int
