@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     collectionOperations:[
         "get"=>[
             'normalization_context' => ['groups' => ['livraison:read:all']],
-            "security" => "is_granted('LIVRAISON_ALL',_api_resource_class)", 
+            // "security" => "is_granted('LIVRAISON_ALL',_api_resource_class)", 
         ],
         "post_register" => [
             "security_post_denormalize" => "is_granted('LIVRAISON_CREATE', object)",

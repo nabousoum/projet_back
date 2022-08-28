@@ -20,7 +20,7 @@ class FriteCommande
     private $id;
 
     #[ORM\Column(type: 'integer')]
-    #[Groups(["com:write"])]
+    #[Groups(["com:write","com:read:simple","com:read:all"])]
     #[Assert\Positive(message:'la quantite doit etre egal au moins a 1')]
     private $quantite=1;
 

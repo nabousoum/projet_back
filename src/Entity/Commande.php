@@ -50,19 +50,19 @@ class Commande
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["com:read:simple","com:read:all","com:write"])]
+    #[Groups(["com:read:simple","com:read:all","com:write","livraison:write","livraison:read:simple","livraison:read:all"])]
     private $numeroCommande;
 
     #[ORM\Column(type: 'datetime')]
-    #[Groups(["com:read:simple","com:read:all"])]
+    #[Groups(["com:read:simple","com:read:all","livraison:write","livraison:read:simple","livraison:read:all"])]
     private $dateCommande;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["com:read:simple","com:read:all"])]
+    #[Groups(["com:read:simple","com:read:all","livraison:write","livraison:read:simple","livraison:read:all"])]
     private $etat="en cours";
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["com:read:simple","com:read:all","com:write"])]
+    #[Groups(["com:read:simple","com:read:all","com:write","livraison:write","livraison:read:simple","livraison:read:all"])]
     private $montantCommande;
 
     #[ORM\ManyToOne(targetEntity: Livraison::class, inversedBy: 'commandes')]
@@ -73,11 +73,11 @@ class Commande
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["com:write","com:read:all","com:write"])]
+    #[Groups(["com:write","com:read:all","com:write","livraison:write","livraison:read:simple","livraison:read:all"])]
     private $client;
 
     #[ORM\ManyToOne(targetEntity: Zone::class, inversedBy: 'commandes')]
-    #[Groups(["com:write","com:read:all","com:write"])]
+    #[Groups(["com:write","com:read:all","com:write","livraison:write","livraison:read:simple","livraison:read:all"])]
     private $zone;
 
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: BurgerCommande::class,cascade:['persist'])]

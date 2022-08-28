@@ -22,7 +22,7 @@ class Produit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["burger:read:simple","burger:read:all","write","com:write","catalogue:read:simple","complement:read:simple","detail"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","com:write","catalogue:read:simple","complement:read:simple","detail","com:read:simple","com:read:all","com:write"])]
     protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -32,7 +32,7 @@ class Produit
 
 
     #[ORM\Column(type: 'float')]
-    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple","detail"])]
+    #[Groups(["burger:read:simple","burger:read:all","write","catalogue:read:simple","complement:read:simple","detail","com:read:simple","com:read:all","com:write"])]
     //  #[Assert\Positive(message: 'le prix ne doit pas etre negatif')]
     protected $prix;
 

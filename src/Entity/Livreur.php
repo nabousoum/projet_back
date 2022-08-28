@@ -6,9 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LivreurRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\HttpFoundation\Response;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\HttpFoundation\Response;
 
 #[ORM\Entity(repositoryClass: LivreurRepository::class)]
 #[ApiResource(
@@ -45,6 +46,7 @@ class Livreur extends User
     private $etat="disponible";
 
     #[ORM\OneToMany(mappedBy: 'livreur', targetEntity: Livraison::class)]
+    #[ApiSubresource]
     private $livraisons;
 
     public function __construct()
