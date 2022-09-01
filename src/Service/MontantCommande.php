@@ -8,7 +8,10 @@ class  MontantCommande
        
         $quantiteBoisson = 0;
         $stock = 0;
-       $montantCommande = $prixZone = $data->getZone()->getPrix();
+        $montantCommande = 0;
+        if($data->getZone()){
+            $montantCommande  = $data->getZone()->getPrix();
+        }
 
         $burgers = $data->getBurgerCommandes();
         $boissons = $data->getBoissonCommandes();

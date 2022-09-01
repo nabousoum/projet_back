@@ -26,7 +26,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
             "security_post_denormalize" => "is_granted('COMMANDE_CREATE', object)",
             "method"=>"post",
             'normalization_context' => ['groups' => ['com:read:simple']],
-            'denormalization_context' => ['groups' => ['com:write']]
+            'denormalization_context' => ['groups' => ['com:write']],
         ]
         ],itemOperations:["put"=>[
            
@@ -46,7 +46,7 @@ class Commande
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["com:read:simple","com:read:all","livraison:write"])]
+    #[Groups(["com:read:simple","com:read:all","livraison:write","livraison:read:simple","livraison:read:all"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
